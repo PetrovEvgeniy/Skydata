@@ -1,11 +1,16 @@
 import React, { Fragment } from 'react';
+import Slider from '../components/Slider/Slider';
+import Aircraft from '../components/Aircraft/Aircraft';
 
 const HomePage = () => {
     return(
         <Fragment>
-            <h1>{"<Slider here>"}</h1>
+            <div className="container">
+            <Slider/>
             <hr/>
-            <h1>{"<Recently added aircraft here>"}</h1>
+            <h1 className="text-dark">RECENTLY ADDED AIRCRAFT</h1>
+            <Aircraft/>
+            </div>
         </Fragment>
     )
 }

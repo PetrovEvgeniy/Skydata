@@ -4,7 +4,9 @@ import RegisterForm from '../components/LoginAndRegisterForms/RegisterForm'
 const RegisterPage = () => {
     return(
         <Fragment>
-            <RegisterForm/>
+            <div className="component">
+                <RegisterForm/>
+            </div>
         </Fragment>
     )
 }

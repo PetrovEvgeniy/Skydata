@@ -1,9 +1,13 @@
 import React, { Fragment } from 'react';
+import Aircraft from '../components/Aircraft/Aircraft';
 
 const AllAircraftPage = () => {
     return(
         <Fragment>
-            <h1>{"<All aircraft data here>"}</h1>
+            <div className="container">
+            <h1>All Aircraft</h1>
+            <Aircraft/>
+            </div>
         </Fragment>
     )
 }
