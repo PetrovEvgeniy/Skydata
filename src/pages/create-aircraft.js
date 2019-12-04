@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
+import CreateAircraftForm from '../components/CreateAircraftForm/CreateAircraftForm';
 
 const CreateAircraftPage = () => {
     return(
         <Fragment>
-            <h1>{"<Create aircraft form here>"}</h1>
+            <CreateAircraftForm/>
         </Fragment>
     )
 }

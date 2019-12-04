@@ -1,7 +1,3 @@
-
-
-
-
 input[type=text], input[type=number], input[type=password] {
     width: 50%;
     padding: 15px;
@@ -22,8 +18,7 @@ hr {
     margin-bottom: 25px;
 }
 
-
-.registerbtn {
+.createBtn {
     background-color: #4CAF50;
     color: white;
     padding: 16px 20px;
@@ -34,27 +29,11 @@ hr {
     opacity: 0.9;
 }
 
-.registerbtn:hover {
+.createBtn:hover {
     opacity: 1;
 }
-button[disabled].registerbtn:hover{
+button[disabled].createBtn:hover{
     
     opacity: 0.4;
     
-}
-button[disabled]{
-    border: 1px solid #999999;
-    opacity: 0.4;
-    
-}
-
-
-a {
-    color: dodgerblue;
-}
-
-
-.signin {
-    background-color: #f1f1f1;
-    text-align: center;
 }
