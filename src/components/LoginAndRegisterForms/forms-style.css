@@ -37,6 +37,16 @@ hr {
 .registerbtn:hover {
     opacity: 1;
 }
+button[disabled].registerbtn:hover{
+    
+    opacity: 0.4;
+    
+}
+button[disabled]{
+    border: 1px solid #999999;
+    opacity: 0.4;
+    
+}
 
 
 a {

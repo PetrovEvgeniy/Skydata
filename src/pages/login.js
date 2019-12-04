@@ -3,7 +3,7 @@ import LoginForm from '../components/LoginAndRegisterForms/LoginForm'
 const LoginPage = () => {
     return(
         <Fragment>
-            <div className="container">
+            <div className="container vh-90">
             <LoginForm/>
             </div>
         </Fragment>

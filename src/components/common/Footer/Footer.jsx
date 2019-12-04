@@ -3,7 +3,7 @@ import { Navbar } from 'react-bootstrap';
 
 const Footer = () => {
     return (
-        <Navbar fixed="bottom" bg="dark" variant="dark">
+        <Navbar sticky="bottom" bg="dark" variant="dark">
 
             <Navbar.Collapse className="justify-content-center">
                 <Navbar.Text>

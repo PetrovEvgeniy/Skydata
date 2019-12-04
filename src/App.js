@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navigation from './components/common/Navigation/Navigation';
-import Footer from './components/common/Footer/Footer';
+//import Footer from './components/common/Footer/Footer';
 import HomePage from './pages/home';
 import RegisterPage from './pages/register'
 import LoginPage from './pages/login';
@@ -29,7 +29,6 @@ class App extends Component {
             <Route path="/my-profile" component={MyProfilePage} />
             <Route path="/*" component={FourOFourPage} />
           </Switch>
-          <Footer/>
         </div>
       </Router>
     );

@@ -2,20 +2,6 @@ import React from 'react';
 
 import { Navbar, Nav } from 'react-bootstrap';
 
-// <nav>
-// <a className="active" href="/">Skydata©</a>
-// <a href="/aircraft/all">All Aircraft</a>
-// <a href="/aircraft/create">Create</a>
-// <div id="auth-buttons">
-//     <a href="/login">Login</a>
-//     <a href="/register">Register</a>
-// </div>
-// <div id="profile">
-//     <a href="/my-profile">My profile</a>
-//     <a href="/logout">Logout</a>
-// </div>
-// </nav>
-
 const Navigation = () => {
     return (
         
