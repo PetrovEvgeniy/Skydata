@@ -76,12 +76,7 @@ class RegisterForm extends Component {
       password: this.state.password
     }
     //register user
-<<<<<<< HEAD
     userService.register(userData).then(this.props.history.push('/login'));
-=======
-    console.log(this.props.history)
-    userService.register(userData)//.then(this.props.history.push('/login'));
->>>>>>> 94b2df7268182a7eabfce2b7d874906718c2a510
 
   };
 

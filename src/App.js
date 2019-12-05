@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navigation from './components/common/Navigation/Navigation';
-<<<<<<< HEAD
 import userService from './services/user-service';
-=======
-//import Footer from './components/common/Footer/Footer';
->>>>>>> 94b2df7268182a7eabfce2b7d874906718c2a510
 import HomePage from './pages/home';
 import RegisterPage from './pages/register'
 import LoginPage from './pages/login';

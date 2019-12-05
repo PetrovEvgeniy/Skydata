@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import '../LoginAndRegisterForms/forms-style.css';
-<<<<<<< HEAD
-=======
-import userService from '../../services/user-service';
->>>>>>> 94b2df7268182a7eabfce2b7d874906718c2a510
 import FormErrors from '../FormErrors/FormErrors';
 
 class LoginForm extends Component {
@@ -36,13 +32,8 @@ class LoginForm extends Component {
           password: this.state.password
         }
         //login user
-<<<<<<< HEAD
-        debugger;
         this.props.login(this.props.history,userData)
         .catch(err => this.setState({formErrors: {other:err}}));
-=======
-        userService.login(userData).then().catch(err => this.setState({formErrors: {other:err}}));
->>>>>>> 94b2df7268182a7eabfce2b7d874906718c2a510
     
       };
 

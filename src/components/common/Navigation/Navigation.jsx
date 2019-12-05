@@ -2,12 +2,8 @@ import React from 'react';
 
 import { Navbar, Nav } from 'react-bootstrap';
 
-<<<<<<< HEAD
 const Navigation = ({isLogged}) => {
  
-=======
-const Navigation = () => {
->>>>>>> 94b2df7268182a7eabfce2b7d874906718c2a510
     return (
         
         <Navbar collapseOnSelect sticky="top" expand="lg" bg="dark" variant="dark">
