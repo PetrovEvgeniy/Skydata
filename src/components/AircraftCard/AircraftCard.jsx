@@ -11,7 +11,7 @@ const AircraftCard = (props) => {
             <Card.Text>{props.description}</Card.Text>
             </Card.Body>
             <Card.Footer>
-                <Button href={`/details/${props.id}`} variant="primary">Learn more</Button>
+                <Button href={`/aircraft/details/${props.id}`} variant="primary">Learn more</Button>
             </Card.Footer>
         </Card>
     );

@@ -41,7 +41,6 @@ class LoginForm extends Component {
         return (
             <div className="login">
                 <form>
-
                     <h1>Login</h1>
                     <p>Please enter your credentials.</p>
                     <FormErrors formErrors={this.state.formErrors}/>

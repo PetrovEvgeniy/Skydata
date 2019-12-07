@@ -18,8 +18,6 @@ class RegisterForm extends Component {
     }
 
     this.handleUserInput = this.handleUserInput.bind(this);
-    
-
   }
 
   handleUserInput(e) {

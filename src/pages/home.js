@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Slider from '../components/Slider/Slider';
-import Aircraft from '../components/Aircraft/Aircraft';
+import RecentAircraft from '../components/Aircraft/RecentAircraft';
 
 const HomePage = () => {
     return(
@@ -9,7 +9,7 @@ const HomePage = () => {
             <Slider/>
             <hr/>
             <h1 className="text-dark">RECENTLY ADDED AIRCRAFT</h1>
-            <Aircraft/>
+            <RecentAircraft/>
             </div>
         </Fragment>
     )

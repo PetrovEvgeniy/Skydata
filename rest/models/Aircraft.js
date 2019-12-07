@@ -10,13 +10,10 @@ const aircraftSchema = new Schema({
         type: String,
         required: true
     },
-<<<<<<< HEAD
     imageURL: {
         type: String,
         required: true
     },
-=======
->>>>>>> 94b2df7268182a7eabfce2b7d874906718c2a510
     type: {
         type: String,
         required: true
@@ -33,7 +30,7 @@ const aircraftSchema = new Schema({
         type: Number,
         required: true
     },
-    range: {
+    capacity: {
         type: Number,
         required: true
     },
