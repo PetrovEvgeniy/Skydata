@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import './App.css';
 import Navigation from './components/common/Navigation/Navigation';
 import userService from './services/user-service';
@@ -13,9 +13,14 @@ import CreateAircraftPage from './pages/create-aircraft';
 import MyProfilePage from './pages/myprofile';
 
 
-function render(Cmp,{isLogged, ...otherProps}){
-  return function(props){
-    return <Cmp {...props} {...otherProps} />
+function render(Cmp,{isLogged, ...otherProps}, isProtected){
+  return (props) => {
+    if(!isLogged && isProtected){
+      return <Redirect to="/login"></Redirect>
+    }
+    else{
+      return <Cmp {...props} {...otherProps} />
+    }
   }
 }
 
@@ -69,7 +74,7 @@ class App extends Component {
               {isLogged})} />
 
             <Route path="/aircraft/create" render={render(CreateAircraftPage,
-              {isLogged})} />
+              {isLogged}, true)} />
 
             <Route path="/register" render={render(RegisterPage,
               {isLogged})} />
@@ -78,10 +83,10 @@ class App extends Component {
               {isLogged,login:this.login})} />
 
             <Route path="/my-profile" render={render(MyProfilePage,
-              {isLogged})} />
+              {isLogged},true)} />
 
             <Route path="/logout" render={render(Logout,
-              {isLogged,logout:this.logout})} />
+              {isLogged,logout:this.logout}, true)} />
 
             <Route path="/*" render={render(FourOFourPage,
               {isLogged})} />
