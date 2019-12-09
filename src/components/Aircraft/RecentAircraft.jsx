@@ -9,7 +9,7 @@ class RecentAircraft extends React.Component {
         recentAircraft: null
     }
 
-    componentWillMount() {
+    componentDidMount() {
         //change limit to a number of desired recent posts
         const limit = 3;
         aircraftService.load(null,limit).then((data) => this.setState({ recentAircraft: data }));

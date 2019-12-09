@@ -18,12 +18,12 @@ function Slider() {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="http://getwallpapers.com/wallpaper/full/6/b/2/1358586-download-fighter-jet-pictures-for-wallpaper-1920x1080.jpg"
+              src="http://www.goalaircraft.com/wp-content/uploads/2018/06/WINDSOR-JET-CIT-X-N751WJ-025-2400x1200.jpg?x76820"
               alt="First slide"
               />
               <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <h3>Welcome to SkyData</h3>
+                <p>Explore a world full of modern and futuristic aircraft.</p>
               </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -34,8 +34,8 @@ function Slider() {
             />
     
             <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h3>Join us</h3>
+              <p>Create a free account and list your favourite aircraft.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -46,9 +46,9 @@ function Slider() {
             />
     
             <Carousel.Caption>
-              <h3>Third slide label</h3>
+              <h3>Have fun</h3>
               <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                Share with your friends.
               </p>
             </Carousel.Caption>
           </Carousel.Item>

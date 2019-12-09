@@ -6,7 +6,7 @@ const AllAircraftPage = () => {
         <Fragment>
             <div className="container">
                 <h2><u>All Aircraft</u></h2>
-            <AllAircraft/>
+                <AllAircraft/>
             </div>
         </Fragment>
     )

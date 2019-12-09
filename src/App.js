@@ -9,6 +9,7 @@ import LoginPage from './pages/login';
 import Logout from './components/Logout/Logout';
 import FourOFourPage from './pages/404';
 import AllAircraftPage from './pages/all-aircraft';
+import AircraftDetailsPage from './pages/details-aircraft';
 import CreateAircraftPage from './pages/create-aircraft';
 import MyProfilePage from './pages/myprofile';
 
@@ -71,6 +72,9 @@ class App extends Component {
               {isLogged})} />
 
             <Route path="/aircraft/all" render={render(AllAircraftPage,
+              {isLogged})} />
+
+            <Route path="/aircraft/details/:id" render={render(AircraftDetailsPage,
               {isLogged})} />
 
             <Route path="/aircraft/create" render={render(CreateAircraftPage,
