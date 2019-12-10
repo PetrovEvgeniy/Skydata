@@ -14,6 +14,7 @@ import CreateAircraftPage from './pages/create-aircraft';
 import MyProfilePage from './pages/myprofile';
 
 
+
 function render(Cmp,{isLogged, ...otherProps}, isProtected){
   return (props) => {
     if(!isLogged && isProtected){
@@ -27,6 +28,7 @@ function render(Cmp,{isLogged, ...otherProps}, isProtected){
 
 function parseCookies() {
   return document.cookie.split('; ').reduce((acc, cookie) => {
+    cookie = cookie.replace('%20',' ');
     const [cookieName, cookieValue] = cookie.split('=');
     acc[cookieName] = cookieValue;
     return acc;
@@ -37,17 +39,28 @@ function cookieExcists(cookies){
     return !!cookies['x-auth-token'];
 }
 
+function getusername(isLogged,cookies){
+  if(isLogged){
+   const username = cookies['username'];
+   return username;
+  }
+  else{
+    return null;
+  }
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
     const cookies = parseCookies();
     const isLogged = cookieExcists(cookies);
-    this.state = { isLogged };
+    const username = getusername(isLogged,cookies); 
+    this.state = { isLogged, username};
   }
 
   logout = (history) => {
     userService.logout().then(() => {
-      this.setState({ isLogged: false });
+      this.setState({ isLogged: false, username: null });
       history.push('/');
       return null;
     });
@@ -55,14 +68,15 @@ class App extends Component {
 
   login = (history, data) => {
     return userService.login(data).then(() => {
-      this.setState({ isLogged: true });
+      this.setState({ isLogged: true,});
       history.push('/');
     });
   }
   render() {
 
    const isLogged = this.state.isLogged;
-   
+   const username = this.state.username;
+
     return (
       <Router>
         <div className="App">
@@ -87,7 +101,7 @@ class App extends Component {
               {isLogged,login:this.login})} />
 
             <Route path="/my-profile" render={render(MyProfilePage,
-              {isLogged},true)} />
+              {isLogged, username},true)} />
 
             <Route path="/logout" render={render(Logout,
               {isLogged,logout:this.logout}, true)} />

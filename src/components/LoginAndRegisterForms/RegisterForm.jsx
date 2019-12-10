@@ -38,8 +38,8 @@ class RegisterForm extends Component {
 
     switch (fieldName) {
       case 'username':
-        usernameValid = value.length >= 3;
-        fieldValidationErrors.username = usernameValid ? '' : ' should be at least 3 characters long.';
+        usernameValid = value.length >= 3 && value.match(/^[A-Za-z0-9]+$/gm);
+        fieldValidationErrors.username = usernameValid ? '' : ' should be at least 3 characters long and contain digits and English letters only.';
         break;
       case 'password':
         passwordValid = value.length >= 6;

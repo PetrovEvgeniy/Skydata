@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
+import ProfileData from '../components/ProfileData/ProfileData';
 
-const MyProfilePage = () => {
+const MyProfilePage = (props) => {
     return(
         <Fragment>
-            <h1>{"<Profile data here>"}</h1>
+            <ProfileData {...props}/>
         </Fragment>
     )
 }

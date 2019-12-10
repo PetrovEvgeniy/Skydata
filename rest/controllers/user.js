@@ -4,7 +4,7 @@ const utils = require('../utils');
 
 module.exports = {
   get: (req, res, next) => {
-    models.User.find()
+    models.User.find().populate('createdAircraft')
       .then((users) => res.send(users))
       .catch(next)
   },
@@ -28,6 +28,7 @@ module.exports = {
           }
 
           const token = utils.jwt.createToken({ id: user._id });
+          res.cookie('username', user.username);
           res.cookie(config.authCookieName, token).send(user);
         })
         .catch(next);
@@ -40,6 +41,7 @@ module.exports = {
       console.log('-'.repeat(100));
       models.TokenBlacklist.create({ token })
         .then(() => {
+          res.clearCookie('userId')
           res.clearCookie(config.authCookieName).send('Logout successfully!');
         })
         .catch(next);
