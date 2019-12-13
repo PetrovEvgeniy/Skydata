@@ -12,7 +12,8 @@ class RecentAircraft extends React.Component {
     componentDidMount() {
         //change limit to a number of desired recent posts
         const limit = 3;
-        aircraftService.load(null,limit).then((data) => this.setState({ recentAircraft: data }));
+        aircraftService.load(null,limit)
+        .then((data) => this.setState({ recentAircraft: data }));
         
     }
     render() {
@@ -23,11 +24,17 @@ class RecentAircraft extends React.Component {
                 {recentAircraft ? 
                 <CardColumns>
                    {recentAircraft.map((e) => 
-                       <AircraftCard key={e._id} id={e._id} name={e.name} type={e.type} description={e.description} imageURL={e.imageURL}/>
+                       <AircraftCard 
+                       key={e._id} 
+                       id={e._id} 
+                       name={e.name} 
+                       type={e.type} 
+                       description={e.description} 
+                       imageURL={e.imageURL}/>
                    )}
 
                 </CardColumns>
-                :<h1>There aren't any aircraft in the data base</h1>}   
+                :<h1>There aren't any aircraft in the database.</h1>}   
             </div>
         );
     }

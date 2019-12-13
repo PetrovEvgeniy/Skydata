@@ -42,7 +42,7 @@ class CreateAircraftForm extends Component {
             () => { this.validateField(name, value) });
     }
 
-    
+
     //Validation
     validateField(fieldName, value) {
         let fieldValidationErrors = this.state.formErrors;
@@ -52,7 +52,7 @@ class CreateAircraftForm extends Component {
         let capacityValid = this.state.capacityValid;
         let priceValid = this.state.priceValid;
         let imageURLValid = this.state.imageURLValid;
-        
+
         switch (fieldName) {
             case 'name':
                 nameValid = value.length >= 5;
@@ -66,21 +66,21 @@ class CreateAircraftForm extends Component {
                 topSpeedValid = value >= 10 && value <= 3000;
                 fieldValidationErrors.topSpeed = topSpeedValid ? '' : ' should be between 10 km/h and 3000 km/h.';
                 break;
-                case 'capacity':
-                    capacityValid = value >= 1 && value <= 1000;
-                    fieldValidationErrors.capacity = capacityValid ? '' : ' should be between 1 and 1000.';
+            case 'capacity':
+                capacityValid = value >= 1 && value <= 1000;
+                fieldValidationErrors.capacity = capacityValid ? '' : ' should be between 1 and 1000.';
                 break;
-                case 'price':
-                    priceValid = value >= 1 && value <= 5000000000;
-                    fieldValidationErrors.price = priceValid ? '' : ' should be a positive number less than 5 bilion.';
+            case 'price':
+                priceValid = value >= 1 && value <= 5000000000;
+                fieldValidationErrors.price = priceValid ? '' : ' should be a positive number less than 5 bilion.';
                 break;
-                case 'imageURL':
+            case 'imageURL':
                 imageURLValid = value.startsWith('http://') || value.startsWith('https://');
                 fieldValidationErrors.imageURL = imageURLValid ? '' : ' should be a valid link.';
                 break;
 
-                default:
-                    break;
+            default:
+                break;
         }
         this.setState({
             formErrors: fieldValidationErrors,
@@ -90,46 +90,47 @@ class CreateAircraftForm extends Component {
             capacityValid: capacityValid,
             priceValid: priceValid,
             imageURLValid: imageURLValid,
-            
+
         }, this.validateForm);
     }
-    
+
     validateForm() {
         this.setState({
             formValid:
-            this.state.nameValid &&
+                this.state.nameValid &&
                 this.state.descriptionValid &&
                 this.state.topSpeedValid &&
                 this.state.capacityValid &&
                 this.state.priceValid &&
                 this.state.imageURLValid
-            });
+        });
+    }
+
+    submitFormHandler(event) {
+        event.preventDefault();
+        const aircraftData = {
+            name: this.state.name,
+            imageURL: this.state.imageURL,
+            type: this.state.type,
+            description: this.state.description,
+            countryOfOrigin: this.state.countryOfOrigin,
+            topSpeed: this.state.topSpeed,
+            capacity: this.state.capacity,
+            price: this.state.price
         }
-        
-        submitFormHandler(event) {
-            event.preventDefault();
-            const aircraftData = {
-              name: this.state.name,
-              imageURL: this.state.imageURL,
-              type: this.state.type,
-              description: this.state.description,
-              countryOfOrigin: this.state.countryOfOrigin,
-              topSpeed: this.state.topSpeed,
-              capacity: this.state.capacity,
-              price: this.state.price
-            }
-            //create aircraft
-            aircraftService.create(aircraftData)
+
+        //create aircraft
+        aircraftService.create(aircraftData)
             .then(this.props.history.push('/aircraft/all'))
             .then(window.location.reload(false))
             .catch(err => console.log(err));
-        }
-        render() {
+    }
+    render() {
         return (
             <div className="create">
                 <form>
                     <h3>Create aircraft</h3>
-                    <FormErrors formErrors={this.state.formErrors}/>
+                    <FormErrors formErrors={this.state.formErrors} />
                     <hr />
                     <p>Aircraft name</p>
                     <input placeholder="ex. MiG-21" name="name" type="text" onChange={this.handleChange} />

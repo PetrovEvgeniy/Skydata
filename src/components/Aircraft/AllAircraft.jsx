@@ -10,23 +10,29 @@ class AllAircraft extends React.Component {
     }
 
     componentDidMount() {
-        
-        aircraftService.load().then((data) => this.setState({ aircraft: data }));
+
+        aircraftService.load()
+        .then((data) => this.setState({ aircraft: data }));
     }
-    
+
     render() {
         const aircraft = this.state.aircraft;
-        
+
         return (
             <div className="container">
-                {aircraft ? 
-                <CardColumns>
-                   {aircraft.map((e) => 
-                       <AircraftCard key={e._id} id={e._id} name={e.name} type={e.type} description={e.description} imageURL={e.imageURL}/>
-                   )}
-
-                </CardColumns>
-                :<h1>There aren't any aircraft in the data base</h1>}   
+                {aircraft ?
+                    <CardColumns>
+                        {aircraft.map((e) =>
+                            <AircraftCard
+                            key={e._id}
+                            id={e._id}
+                            name={e.name}
+                            type={e.type}
+                            description={e.description}
+                            imageURL={e.imageURL} />
+                        )}
+                    </CardColumns>
+                    : <h1>There aren't any aircraft in the database.</h1>}
             </div>
         );
     }

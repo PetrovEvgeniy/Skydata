@@ -11,13 +11,15 @@ class DetailsAircraft extends React.Component {
     componentDidMount() {
 
         const id = this.props.match.params.id;
-        aircraftService.load(id, null).then((data) => this.setState({ aircraft: data })).catch(err => console.log(err));
+
+        aircraftService.load(id, null)
+            .then((data) => this.setState({ aircraft: data }))
+            .catch(err => console.log(err));
 
     }
     render() {
         const aircraft = this.state.aircraft;
-        //const username = aircraft.creator;
-        
+
         return (
             <div className="container">
 
@@ -37,18 +39,15 @@ class DetailsAircraft extends React.Component {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><CountryFlag countryName={aircraft.countryOfOrigin}/> {aircraft.countryOfOrigin}</td>
+                                    <td><CountryFlag countryName={aircraft.countryOfOrigin} /> {aircraft.countryOfOrigin}</td>
                                     <td>{aircraft.topSpeed}km/h</td>
                                     <td>{aircraft.capacity}</td>
                                     <td>{aircraft.price}€</td>
                                 </tr>
                             </tbody>
                         </Table>
-                        
-                        
-                        
-                <small>Listed by: </small><strong>{aircraft.creator.username}</strong>
-                        
+
+                        <small>Listed by: </small><strong>{aircraft.creator.username}</strong>
 
                     </div>
 

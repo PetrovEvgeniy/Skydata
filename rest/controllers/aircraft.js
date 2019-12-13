@@ -1,7 +1,7 @@
 const models = require('../models');
 
 module.exports = {
-  
+
   get: (req, res, next) => {
     const limit = +req.query.limit;
 
@@ -11,20 +11,20 @@ module.exports = {
         .catch(next);
       return;
     }
-  
+
     models.Aircraft.find().populate('creator')
       .then((aircraft) => res.send(aircraft))
       .catch(next);
   },
-getOne: (req,res, next) => {
-  const {id} = req.params;
+  getOne: (req, res, next) => {
+    const { id } = req.params;
 
-    models.Aircraft.findOne({_id: id }).populate('creator')
+    models.Aircraft.findOne({ _id: id }).populate('creator')
       .then((aircraft) => res.send(aircraft))
       .catch(next);
     return;
 
-}
+  }
   ,
   post: (req, res, next) => {
     const { name, imageURL, description, type, countryOfOrigin, topSpeed, capacity, price } = req.body;

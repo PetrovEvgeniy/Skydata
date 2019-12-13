@@ -15,12 +15,13 @@ import MyProfilePage from './pages/myprofile';
 
 
 
-function render(Cmp,{isLogged, ...otherProps}, isProtected){
+function render(Cmp, { isLogged, ...otherProps }, isProtected) {
   return (props) => {
-    if(!isLogged && isProtected){
+    //Route protection
+    if (!isLogged && isProtected) {
       return <Redirect to="/login"></Redirect>
     }
-    else{
+    else {
       return <Cmp {...props} {...otherProps} />
     }
   }
@@ -28,23 +29,23 @@ function render(Cmp,{isLogged, ...otherProps}, isProtected){
 
 function parseCookies() {
   return document.cookie.split('; ').reduce((acc, cookie) => {
-    cookie = cookie.replace('%20',' ');
+    cookie = cookie.replace('%20', ' ');
     const [cookieName, cookieValue] = cookie.split('=');
     acc[cookieName] = cookieValue;
     return acc;
   }, {})
 }
 
-function cookieExcists(cookies){
-    return !!cookies['x-auth-token'];
+function cookieExcists(cookies) {
+  return !!cookies['x-auth-token'];
 }
 
-function getusername(isLogged,cookies){
-  if(isLogged){
-   const username = cookies['username'];
-   return username;
+function getUsername(isLogged, cookies) {
+  if (isLogged) {
+    const username = cookies['username'];
+    return username;
   }
-  else{
+  else {
     return null;
   }
 }
@@ -54,8 +55,8 @@ class App extends Component {
     super(props);
     const cookies = parseCookies();
     const isLogged = cookieExcists(cookies);
-    const username = getusername(isLogged,cookies); 
-    this.state = { isLogged, username};
+    const username = getUsername(isLogged, cookies);
+    this.state = { isLogged, username };
   }
 
   logout = (history) => {
@@ -68,47 +69,47 @@ class App extends Component {
 
   login = (history, data) => {
     return userService.login(data).then(() => {
-      this.setState({ isLogged: true,});
+      this.setState({ isLogged: true, });
       history.push('/');
     });
   }
   render() {
 
-   const isLogged = this.state.isLogged;
-   const username = this.state.username;
+    const isLogged = this.state.isLogged;
+    const username = this.state.username;
 
     return (
       <Router>
         <div className="App">
-          <Navigation isLogged={isLogged}/>
+          <Navigation isLogged={isLogged} />
           <Switch>
-            <Route path="/" exact render={render(HomePage,
-              {isLogged})} />
+            <Route path="/" exact 
+            render={render(HomePage, { isLogged })} />
 
-            <Route path="/aircraft/all" render={render(AllAircraftPage,
-              {isLogged})} />
+            <Route path="/aircraft/all" 
+            render={render(AllAircraftPage,{ isLogged })} />
 
-            <Route path="/aircraft/details/:id" render={render(AircraftDetailsPage,
-              {isLogged})} />
+            <Route path="/aircraft/details/:id" 
+            render={render(AircraftDetailsPage,{ isLogged })} />
 
-            <Route path="/aircraft/create" render={render(CreateAircraftPage,
-              {isLogged}, true)} />
+            <Route path="/aircraft/create" 
+            render={render(CreateAircraftPage,{ isLogged }, true)} />
 
-            <Route path="/register" render={render(RegisterPage,
-              {isLogged})} />
+            <Route path="/register" 
+            render={render(RegisterPage,{ isLogged })} />
 
-            <Route path="/login"  render={render(LoginPage,
-              {isLogged,login:this.login})} />
+            <Route path="/login" 
+            render={render(LoginPage,{ isLogged, login: this.login })} />
 
-            <Route path="/my-profile" render={render(MyProfilePage,
-              {isLogged, username},true)} />
+            <Route path="/my-profile" 
+            render={render(MyProfilePage,{ isLogged, username }, true)} />
 
-            <Route path="/logout" render={render(Logout,
-              {isLogged,logout:this.logout}, true)} />
+            <Route path="/logout" 
+            render={render(Logout,{ isLogged, logout: this.logout }, true)} />
 
-            <Route path="/*" render={render(FourOFourPage,
-              {isLogged})} />
-              
+            <Route path="/*" 
+            render={render(FourOFourPage,{ isLogged })} />
+
           </Switch>
         </div>
       </Router>

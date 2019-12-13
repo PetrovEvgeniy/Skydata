@@ -61,10 +61,12 @@ class RegisterForm extends Component {
   }
 
   validateForm() {
-    this.setState({ formValid: 
-      this.state.usernameValid &&
-       this.state.passwordValid &&
-        this.state.rePasswordValid });
+    this.setState({
+      formValid:
+        this.state.usernameValid &&
+        this.state.passwordValid &&
+        this.state.rePasswordValid
+    });
   }
 
   submitFormHandler = (event) => {
@@ -86,9 +88,7 @@ class RegisterForm extends Component {
           <div className="container">
             <h1>Register</h1>
             <FormErrors formErrors={this.state.formErrors} />
-            
             <hr />
-
             <p>Username</p>
             <input type="text" value={this.state.username} placeholder="Enter Username" name="username" onChange={this.handleUserInput} />
 

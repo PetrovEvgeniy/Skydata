@@ -1,6 +1,6 @@
 import React from 'react';
 import userService from '../../services/user-service';
-import { Image,ListGroup } from 'react-bootstrap';
+import { Image, ListGroup } from 'react-bootstrap';
 
 
 class ProfileData extends React.Component {
@@ -30,7 +30,9 @@ class ProfileData extends React.Component {
                 <h3><u>{username}</u></h3>
                 <h3>Created aircraft: {aircraftCount}</h3>
                 <hr />
-        {aircraft ? <ListGroup defaultActiveKey="#link1"> {aircraft.map(a => <ListGroup.Item key={a._id} action href={"/aircraft/details/" + a._id}>{a.name}</ListGroup.Item>)}</ListGroup>
+                {aircraft ? <ListGroup defaultActiveKey="#link1"> {aircraft.map(a =>
+                    <ListGroup.Item key={a._id} action href={"/aircraft/details/" + a._id}>{a.name}</ListGroup.Item>)}
+                </ListGroup>
                     : <span>No data</span>}
 
             </div>

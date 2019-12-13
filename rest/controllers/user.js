@@ -28,6 +28,7 @@ module.exports = {
           }
 
           const token = utils.jwt.createToken({ id: user._id });
+        
           res.cookie('username', user.username);
           res.cookie(config.authCookieName, token).send(user);
         })
