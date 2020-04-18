@@ -8,13 +8,25 @@ module.exports = {
       .then((users) => res.send(users))
       .catch(next)
   },
+  getOne: (req, res, next) => {
+    const { _id } = req.user;
+    
+    models.User.findOne({_id: _id}).populate('createdAircraft')
+    .then(userData => res.send(userData))
+    .catch(next)
+  },
 
   post: {
     register: (req, res, next) => {
       const { username, password } = req.body;
       models.User.create({ username, password })
         .then((createdUser) => res.send(createdUser))
-        .catch(next)
+        .catch(error => {
+          if(error.name === 'MongoError' && error.code === 11000){
+            res.status(400).send('That username already excists')
+          }
+        })
+     
     },
 
     login: (req, res, next) => {
@@ -29,7 +41,6 @@ module.exports = {
 
           const token = utils.jwt.createToken({ id: user._id });
         
-          res.cookie('username', user.username);
           res.cookie(config.authCookieName, token).send(user);
         })
         .catch(next);
@@ -37,12 +48,8 @@ module.exports = {
 
     logout: (req, res, next) => {
       const token = req.cookies[config.authCookieName];
-      console.log('-'.repeat(100));
-      console.log(token);
-      console.log('-'.repeat(100));
       models.TokenBlacklist.create({ token })
         .then(() => {
-          res.clearCookie('userId')
           res.clearCookie(config.authCookieName).send('Logout successfully!');
         })
         .catch(next);

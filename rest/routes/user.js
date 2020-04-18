@@ -1,7 +1,10 @@
 const controllers = require('../controllers/');
 const router = require('express').Router();
+const { auth } = require('../utils');
 
-router.get('/', controllers.user.get);
+router.get('/', auth(), controllers.user.get);
+
+router.get('/getOne', auth(), controllers.user.getOne);
 
 router.post('/register', controllers.user.post.register);
 

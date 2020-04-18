@@ -8,8 +8,8 @@ const { auth } = require('../utils');
 
  router.post('/', auth(), controllers.aircraft.post);
 
-// // router.put('/:id', auth(), controllers.aircraft.put);
+ router.put('/:id', auth(), controllers.aircraft.put);
 
-// // router.delete('/:id', auth(), controllers.aircraft.delete);
+ router.delete('/:id', auth(), controllers.aircraft.delete);
 
  module.exports = router;
