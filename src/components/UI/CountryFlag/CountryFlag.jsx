@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image} from 'react-bootstrap';
-import '../CountryFlag/CountryFlag.css'
+import './CountryFlag.css'
 
 export default (props) => {
     let imgURL = "";

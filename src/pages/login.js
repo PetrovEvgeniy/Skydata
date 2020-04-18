@@ -1,12 +1,10 @@
-import React, { Fragment } from 'react';
-import LoginForm from '../components/LoginAndRegisterForms/LoginForm'
+import React from 'react';
+import LoginForm from '../components/Forms/LoginAndRegisterForms/LoginForm'
 const LoginPage = (props) => {
     return(
-        <Fragment>
-            <div className="container vh-90">
+        <div className="container vh-90">
             <LoginForm {...props}/>
-            </div>
-        </Fragment>
+        </div>
     )
 }
 

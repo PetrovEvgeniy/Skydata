@@ -8,7 +8,9 @@ function Slider() {
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
-    setDirection(e.direction);
+    if(e){
+      setDirection(e.direction);
+    }
   };
 
   return (

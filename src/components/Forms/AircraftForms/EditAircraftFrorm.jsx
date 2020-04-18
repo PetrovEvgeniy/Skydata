@@ -1,32 +1,33 @@
 import React, { Component } from 'react';
-import '../CreateAircraftForm/CreateAircraftForm.css';
-import FormErrors from '../FormErrors/FormErrors';
-import aircraftService from '../../services/aircraft-service';
+import {Button, Modal} from 'react-bootstrap'
+import './AircraftForm.css';
+import FormErrors from '../../UI/FormErrors/FormErrors';
+import aircraftService from '../../../services/aircraft-service';
 
-class CreateAircraftForm extends Component {
+class EditAircraftForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
             //Set default values of all form imput values
-            name: '',
-            description: '',
-            type: 'Airliner',
-            countryOfOrigin: 'USA',
-            topSpeed: 0,
-            capacity: 0,
-            price: 0,
-            imageURL: '',
+            name: props.aircraft.name,
+            description: props.aircraft.description,
+            type: props.aircraft.type,
+            countryOfOrigin: props.aircraft.countryOfOrigin,
+            topSpeed: props.aircraft.topSpeed,
+            capacity: props.aircraft.capacity,
+            price: props.aircraft.price,
+            imageURL: props.aircraft.imageURL,
             //Set all field errors to an empty string
             formErrors: { name: '', description: '', topSpeed: '', price: '', imageURL: '' },
 
             //Set default isValid values
-            nameValid: false,
-            descriptionValid: false,
-            topSpeedValid: false,
-            priceValid: false,
-            capacityValid: false,
-            imageURLValid: false,
-            formValid: false,
+            nameValid: true,
+            descriptionValid: true,
+            topSpeedValid: true,
+            priceValid: true,
+            capacityValid: true,
+            imageURLValid: true,
+            formValid: true,
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -120,25 +121,35 @@ class CreateAircraftForm extends Component {
         }
 
         //create aircraft
-        aircraftService.create(aircraftData)
-            .then(this.props.history.push('/aircraft/all'))
-            .then(window.location.reload(false))
+        aircraftService.update(aircraftData, this.props.aircraft._id)
+            .then(res => {
+                this.props.onEditFinish()
+            })
             .catch(err => console.log(err));
     }
     render() {
         return (
             <div className="create">
                 <form>
-                    <h3>Create aircraft</h3>
                     <FormErrors formErrors={this.state.formErrors} />
-                    <hr />
                     <p>Aircraft name</p>
-                    <input placeholder="ex. MiG-21" name="name" type="text" onChange={this.handleChange} />
+                    <input 
+                    placeholder="ex. MiG-21" 
+                    name="name"
+                    type="text" 
+                    value={this.state.name} 
+                    onChange={this.handleChange} />
 
                     <p>Short description</p>
-                    <input placeholder="ex. This is one of the fastest planes in the world." onChange={this.handleChange} name="description" type="text" />
+                    <input 
+                    placeholder="ex. This is one of the fastest planes in the world." 
+                    onChange={this.handleChange} 
+                    name="description"
+                    value={this.state.description} 
+                    type="text" />
+
                     <p>Aircraft type</p>
-                    <select id="type" name="type" onChange={this.handleChange}>
+                    <select id="type" name="type" value={this.state.type} onChange={this.handleChange}>
                         <option value="Airliner">Airliner</option>
                         <option value="Airship">Airship</option>
                         <option value="Balloon">Balloon</option>
@@ -155,7 +166,7 @@ class CreateAircraftForm extends Component {
                     </select>
                     <p>Country of origin</p>
 
-                    <select id="countryOfOrigin" name="countryOfOrigin" onChange={this.handleChange}>
+                    <select id="countryOfOrigin" name="countryOfOrigin" value={this.state.countryOfOrigin}  onChange={this.handleChange}>
                         <option value="USA">USA</option>
                         <option value="Japan">Japan</option>
                         <option value="China">China</option>
@@ -166,24 +177,57 @@ class CreateAircraftForm extends Component {
                         <option value="India">India</option>
                         <option value="Bulgaria">Bulgaria</option>
                     </select>
+
                     <p>Top speed (km/h)</p>
-                    <input placeholder="ex. 969 km/h" name="topSpeed" min="10" max="3000" type="number" onChange={this.handleChange} />
+                    <input 
+                    placeholder="ex. 969 km/h" 
+                    name="topSpeed" 
+                    min="10" 
+                    max="3000" 
+                    type="number" 
+                    value={this.state.topSpeed} 
+                    onChange={this.handleChange} />
 
                     <p>Capacity</p>
-                    <input placeholder="ex. 140" name="capacity" min="1" type="number" onChange={this.handleChange} />
+                    <input 
+                    placeholder="ex. 140" 
+                    name="capacity" 
+                    min="1" 
+                    type="number"
+                    value={this.state.capacity} 
+                    onChange={this.handleChange} />
 
                     <p>Price(€)</p>
-                    <input placeholder="ex. 500000€" name="price" min="1" type="number" onChange={this.handleChange} />
+                    <input 
+                    placeholder="ex. 500000€" 
+                    name="price" 
+                    min="1" 
+                    type="number"
+                    value={this.state.price} 
+                    onChange={this.handleChange} />
 
                     <p>Image URL</p>
-                    <input placeholder="ex. https://hd.plane.picture.png" name="imageURL" type="text" onChange={this.handleChange} />
+                    <input 
+                    placeholder="ex. https://hd.plane.picture.png" 
+                    name="imageURL" 
+                    type="text"
+                    value={this.state.imageURL} 
+                    onChange={this.handleChange} />
 
-                    <hr />
-                    <button type="submit" disabled={!this.state.formValid} className="registerbtn" onClick={this.submitFormHandler.bind(this)}>Take off</button>
+                    {/* <hr />
+                    <button type="submit" disabled={!this.state.formValid} className="registerbtn" onClick={this.submitFormHandler.bind(this)}>Take off</button> */}
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={this.props.onEditCancel}>
+                            Cancel
+                        </Button>
+                        <Button variant="primary" disabled={!this.state.formValid} onClick={this.submitFormHandler.bind(this)}>
+                            Save changes
+                        </Button>
+                    </Modal.Footer>
                 </form>
             </div>
         );
     }
 }
 
-export default CreateAircraftForm;
+export default EditAircraftForm;

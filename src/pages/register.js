@@ -1,13 +1,11 @@
-import React, { Fragment } from 'react';
-import RegisterForm from '../components/LoginAndRegisterForms/RegisterForm'
+import React from 'react';
+import RegisterForm from '../components/Forms/LoginAndRegisterForms/RegisterForm'
 
 const RegisterPage = (props) => {
     return(
-        <Fragment>
-            <div className="component">
-                <RegisterForm {...props}/>
-            </div>
-        </Fragment>
+        <div className="component">
+            <RegisterForm {...props}/>
+        </div>
     )
 }
 

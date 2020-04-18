@@ -1,5 +1,5 @@
 input[type=text], input[type=number], input[type=password]{
-    width: 50%;
+    width: 450px;
     padding: 5px;
     margin: 0px 0 10px 0;
     display: inline-block;
@@ -7,7 +7,7 @@ input[type=text], input[type=number], input[type=password]{
     background: #f1f1f1;
 }
 select{
-    width: 50%;
+    width: 450px;
     padding: 5px;
     margin: 0px 0 10px 0;
     display: inline-flex;
@@ -33,7 +33,7 @@ hr {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 50%;
+    width: 450px;
     opacity: 0.9;
 }
 #b{
@@ -47,4 +47,14 @@ button[disabled].createBtn:hover{
     
     opacity: 0.4;
     
+}
+
+
+@media screen and (max-width: 500px) {
+    input[type=text], input[type=number], input[type=password]{
+        width: 90%;
+    }
+    select{
+        width: 90%;
+    }
 }

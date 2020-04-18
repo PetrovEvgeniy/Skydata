@@ -1,11 +1,9 @@
-import React, { Fragment } from 'react';
-import CreateAircraftForm from '../components/CreateAircraftForm/CreateAircraftForm';
+import React from 'react';
+import CreateAircraftForm from '../components/Forms/AircraftForms/CreateAircraftForm';
 
 const CreateAircraftPage = (props) => {
     return(
-        <Fragment>
-            <CreateAircraftForm {...props}/>
-        </Fragment>
+        <CreateAircraftForm {...props}/>
     )
 }
 

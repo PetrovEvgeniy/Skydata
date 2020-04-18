@@ -1,17 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import './App.css';
 import Navigation from './components/common/Navigation/Navigation';
 import userService from './services/user-service';
-import HomePage from './pages/home';
-import RegisterPage from './pages/register'
-import LoginPage from './pages/login';
 import Logout from './components/Logout/Logout';
 import FourOFourPage from './pages/404';
 import AllAircraftPage from './pages/all-aircraft';
 import AircraftDetailsPage from './pages/details-aircraft';
-import CreateAircraftPage from './pages/create-aircraft';
 import MyProfilePage from './pages/myprofile';
+import Spinner from './components/UI/Spinner/Spinner';
+
+const HomePage = React.lazy(() => import('./pages/home'));
+const RegisterPage = React.lazy(() => import('./pages/register'));
+const LoginPage = React.lazy(() => import('./pages/login'));
+const CreateAircraftPage = React.lazy(() => import('./pages/create-aircraft'));
+
 
 
 
@@ -40,10 +43,10 @@ function cookieExcists(cookies) {
   return !!cookies['x-auth-token'];
 }
 
-function getUsername(isLogged, cookies) {
+function getAuthToken(isLogged, cookies) {
   if (isLogged) {
-    const username = cookies['username'];
-    return username;
+    const authToken = cookies['x-auth-token'];
+    return authToken;
   }
   else {
     return null;
@@ -55,8 +58,10 @@ class App extends Component {
     super(props);
     const cookies = parseCookies();
     const isLogged = cookieExcists(cookies);
-    const username = getUsername(isLogged, cookies);
-    this.state = { isLogged, username };
+    const authToken = getAuthToken(isLogged, cookies);
+    this.state = {
+       isLogged,
+       authToken };
   }
 
   logout = (history) => {
@@ -72,16 +77,22 @@ class App extends Component {
       this.setState({ isLogged: true, });
       history.push('/');
     });
-  }
+  } 
   render() {
 
     const isLogged = this.state.isLogged;
-    const username = this.state.username;
+    const authToken = this.state.authToken; 
 
     return (
+      
       <Router>
         <div className="App">
           <Navigation isLogged={isLogged} />
+          <Suspense fallback={<div style={{
+            display: 'flex',  
+            justifyContent:'center', 
+            alignItems:'center', 
+            height: '100vh'}}><Spinner/></div>}>
           <Switch>
             <Route path="/" exact 
             render={render(HomePage, { isLogged })} />
@@ -102,7 +113,7 @@ class App extends Component {
             render={render(LoginPage,{ isLogged, login: this.login })} />
 
             <Route path="/my-profile" 
-            render={render(MyProfilePage,{ isLogged, username }, true)} />
+            render={render(MyProfilePage,{ isLogged, authToken }, true)} />
 
             <Route path="/logout" 
             render={render(Logout,{ isLogged, logout: this.logout }, true)} />
@@ -111,6 +122,7 @@ class App extends Component {
             render={render(FourOFourPage,{ isLogged })} />
 
           </Switch>
+          </Suspense>
         </div>
       </Router>
     );

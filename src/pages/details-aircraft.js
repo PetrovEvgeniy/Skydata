@@ -1,13 +1,11 @@
-import React, { Fragment } from 'react';
-import AircraftDetails from '../components/DetailsAircarft/DetailsAircraft'
+import React from 'react';
+import AircraftDetails from '../components/Aircraft/DetailsAircarft/DetailsAircraft'
 
 const AircraftDetailsPage = (props) => {
     return(
-        <Fragment>
-            <div className="container">
-                <AircraftDetails {...props}/>
-            </div>
-        </Fragment>
+        <div className="container">
+            <AircraftDetails {...props}/>
+        </div>
     )
 }
 

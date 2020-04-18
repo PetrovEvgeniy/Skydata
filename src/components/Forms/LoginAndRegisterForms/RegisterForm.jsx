@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../LoginAndRegisterForms/forms-style.css';
-import FormErrors from '../FormErrors/FormErrors';
-import userService from '../../services/user-service'
+import './forms-style.css';
+import FormErrors from '../../UI/FormErrors/FormErrors';
+import userService from '../../../services/user-service'
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -76,8 +76,15 @@ class RegisterForm extends Component {
       password: this.state.password
     }
     //register user
-    userService.register(userData).then(this.props.history.push('/login'));
 
+    userService.register(userData)
+    .then(data => this.props.history.push('/login'))
+    .catch(err => {
+      this.setState({ formErrors: { other: err } });
+      this.props.history.push('/register');
+    });
+
+    
   };
 
 

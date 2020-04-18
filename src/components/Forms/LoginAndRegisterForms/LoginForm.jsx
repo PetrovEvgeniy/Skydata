@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../LoginAndRegisterForms/forms-style.css';
-import FormErrors from '../FormErrors/FormErrors';
+import FormErrors from '../../UI/FormErrors/FormErrors';
 
 class LoginForm extends Component {
   constructor(props) {
