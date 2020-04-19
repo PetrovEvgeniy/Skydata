@@ -1,9 +1,11 @@
+import apiUrl from './config';
+
 const aircraftService = {
     load: function (id, limit) {
-      return fetch(`http://localhost:9999/api/aircraft${id ? `/${id}` : ''}${limit ? `?limit=${limit}` : ''}`).then(res => res.json());
+      return fetch(`${apiUrl}/aircraft${id ? `/${id}` : ''}${limit ? `?limit=${limit}` : ''}`).then(res => res.json());
     },
     create: function(data) {
-        return fetch(`http://localhost:9999/api/aircraft/`, {
+        return fetch(`${apiUrl}/aircraft/`, {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'
@@ -14,7 +16,7 @@ const aircraftService = {
       },
 
       update: function(data,id) {
-        return fetch(`http://localhost:9999/api/aircraft/${id}`, {
+        return fetch(`${apiUrl}/aircraft/${id}`, {
           method: 'PUT',
           headers: {
             'Content-type': 'application/json'
@@ -25,7 +27,7 @@ const aircraftService = {
       },
 
       delete: function(id) {
-        return fetch(`http://localhost:9999/api/aircraft/${id}`, {
+        return fetch(`${apiUrl}/aircraft/${id}`, {
           method: 'DELETE',
           credentials: 'include'
         }).then(res => res.json()).catch(err => {

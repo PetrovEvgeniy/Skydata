@@ -1,6 +1,8 @@
+import apiUrl from './config';
+
 const userService = {
   get: function() {
-    return fetch(`http://localhost:9999/api/user`, {
+    return fetch(`${apiUrl}/user`, {
       method: 'GET',
       headers: {
         'Content-type': 'application/json'
@@ -8,7 +10,7 @@ const userService = {
     }).then(res => res.json());
   },
   getOne: function() {
-    return fetch(`http://localhost:9999/api/user/getOne`, {
+    return fetch(`${apiUrl}/user/getOne`, {
       method: 'GET',
       headers: {
         'Content-type': 'application/json'
@@ -17,7 +19,7 @@ const userService = {
     }).then(res => res.json());
   },
     register: function (data) {
-      return fetch(`http://localhost:9999/api/user/register`, {
+      return fetch(`${apiUrl}/user/register`, {
         body: JSON.stringify(data),
         method: 'POST',
         headers: {
@@ -27,7 +29,7 @@ const userService = {
     },
   
     login: function (data) {
-      return fetch(`http://localhost:9999/api/user/login`, {
+      return fetch(`${apiUrl}/user/login`, {
         body: JSON.stringify(data),
         method: 'POST',
         headers: {
@@ -38,7 +40,7 @@ const userService = {
     },
   
     logout: function () {
-      return fetch(`http://localhost:9999/api/user/logout`, {
+      return fetch(`${apiUrl}/user/logout`, {
         method: 'POST',
         credentials: 'include'
       }).then(res => res.text());
