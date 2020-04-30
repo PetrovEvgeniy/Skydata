@@ -2,6 +2,10 @@
 ## Project description
 This single page gives an opportunity to the users to share and learn interesting facts about different types of aircraft. 
 
+## Deployed in:
+Firebase #1 - https://skydata-app.web.app/
+Firebase #2 - https://skydata-app.firebaseapp.com/
+
 ## Installing the project dependencies
 In the project and rest directory run:
 
