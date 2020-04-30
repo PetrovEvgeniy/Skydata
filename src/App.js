@@ -16,8 +16,6 @@ const LoginPage = React.lazy(() => import('./pages/login'));
 const CreateAircraftPage = React.lazy(() => import('./pages/create-aircraft'));
 
 
-
-
 function render(Cmp, { isLogged, ...otherProps }, isProtected) {
   return (props) => {
     //Route protection
@@ -30,54 +28,55 @@ function render(Cmp, { isLogged, ...otherProps }, isProtected) {
   }
 }
 
-function parseCookies() {
-  return document.cookie.split('; ').reduce((acc, cookie) => {
-    cookie = cookie.replace('%20', ' ');
-    const [cookieName, cookieValue] = cookie.split('=');
-    acc[cookieName] = cookieValue;
-    return acc;
-  }, {})
-}
-
-function cookieExcists(cookies) {
-  return !!cookies['x-auth-token'];
-}
-
-function getAuthToken(isLogged, cookies) {
-  if (isLogged) {
-    const authToken = cookies['x-auth-token'];
-    return authToken;
-  }
-  else {
-    return null;
-  }
-}
 
 class App extends Component {
   constructor(props) {
     super(props);
-    const cookies = parseCookies();
-    const isLogged = cookieExcists(cookies);
-    const authToken = getAuthToken(isLogged, cookies);
+    const isLogged = this.tokenExcists() && this.tokenNotExpired();
+    const authToken = this.getAuthToken(isLogged);
     this.state = {
        isLogged,
        authToken };
   }
 
+  tokenExcists() {
+    return !!localStorage.getItem('x-auth-token');
+  }
+
+  tokenNotExpired(){  
+    return new Date(localStorage.getItem('expirationDate')).getTime() > new Date().getTime();
+  }
+  
+   getAuthToken(isLogged) {
+    if (isLogged) {
+      const authToken = localStorage.getItem('x-auth-token');
+      return authToken;
+    }
+    else {
+      return null;
+    }
+  }
+
   logout = (history) => {
     userService.logout().then(() => {
-      this.setState({ isLogged: false, username: null });
+      this.setState({ isLogged: false,authToken: null});
+      localStorage.removeItem('x-auth-token');
+      localStorage.removeItem('expirationDate');
       history.push('/');
       return null;
     });
   }
 
   login = (history, data) => {
-    return userService.login(data).then(() => {
-      this.setState({ isLogged: true, });
-      history.push('/');
-    });
+    return userService.login(data).then(([user,token]) => {
+      this.setState({ isLogged: true, authToken: token});
+      const expirationDate = new Date(new Date().getTime() + 360000 * 10)
+      localStorage.setItem('x-auth-token', token);
+      localStorage.setItem('expirationDate', expirationDate);
+    })
+    .then(history.push('/'))
   } 
+
   render() {
 
     const isLogged = this.state.isLogged;

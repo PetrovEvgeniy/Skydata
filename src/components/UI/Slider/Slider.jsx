@@ -20,7 +20,7 @@ function Slider() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="http://www.goalaircraft.com/wp-content/uploads/2018/06/WINDSOR-JET-CIT-X-N751WJ-025-2400x1200.jpg?x76820"
+          src="https://www.goalaircraft.com/wp-content/uploads/2018/06/WINDSOR-JET-CIT-X-N751WJ-025-2400x1200.jpg?x76820"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -31,7 +31,7 @@ function Slider() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="http://www.womanthology.co.uk/wp-content/uploads/2015/11/Helicopter-800-x-400.jpg"
+          src="https://www.womanthology.co.uk/wp-content/uploads/2015/11/Helicopter-800-x-400.jpg"
           alt="Second slide"
         />
 
