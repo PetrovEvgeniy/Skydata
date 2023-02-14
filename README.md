@@ -1,6 +1,24 @@
-# SkyData
-## Project description
+# ✈️SkyData
+
 This single page application gives an opportunity to the users to share and learn interesting facts about different types of aircraft. 
+
+# 💡Basic (guest) Functionality
+- See the last 3 added aircraft
+- See all aircraft
+- See details about a specific aircraft
+- Login/Register Functionality
+
+# 🪪Logged-in Functionality
+*access to all features listed above
+- CRUD operations for own listings of aircrafts
+- Custom user profile page (including a list of user's added aircraft)
+- Sign out functionality
+
+# 🎁Extra features
+- Responsive design (using bootstrap)
+- Error handling (e.g. custom 404 page)
+- Dynamic input field validation
+
 
 ## Deployed in:
 Firebase #1 - https://skydata-app.web.app/
@@ -28,6 +46,4 @@ You will also see any lint errors in the console.
 ### Update: Removed rest folder and hosted the api server in: https://skydata-api.herokuapp.com/
 (to see aircraft data try https://skydata-api.herokuapp.com/api/aircraft)
 
-### Rest API repository: https://github.com/PetrovEvgeniy/skydata-project-rest-api
-
-
+### 🔗Rest API (Server Side Code) repository: https://github.com/PetrovEvgeniy/skydata-project-rest-api
