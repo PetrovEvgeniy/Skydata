@@ -41,9 +41,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-## Starting the Rest API server[Legacy]
+## [Legacy] Starting the Rest API server
 
-### Update: Removed rest folder and hosted the api server in: https://skydata-api.herokuapp.com/
-(to see aircraft data try https://skydata-api.herokuapp.com/api/aircraft)
+### Update: Removed rest folder and hosted the api server in: https://skydata-api.onrender.com/
+(to see aircraft data try https://skydata-api.onrender.com/api/aircraft)
 
 ### 🔗Rest API (Server Side Code) repository: https://github.com/PetrovEvgeniy/skydata-project-rest-api
