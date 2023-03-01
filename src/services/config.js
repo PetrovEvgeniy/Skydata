@@ -1,2 +1,2 @@
-const apiUrl = "https://skydata-api.herokuapp.com/api";
+const apiUrl = "https://skydata-api.onrender.com/api";
 module.exports = apiUrl

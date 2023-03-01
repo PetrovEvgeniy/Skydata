@@ -43,7 +43,7 @@ function Slider() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://s.yimg.com/ny/api/res/1.2/BXC1SofZ_oZ4N.L5OrIlWA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9ODAw/https://media.zenfs.com/en/popular_mechanics_642/f142ebb80fb4d3f559d9c17c3194740e"
+          src="https://images.hdqwalls.com/wallpapers/2022-top-gun-maverick-4k-5p.jpg"
           alt="Third slide"
         />
 
