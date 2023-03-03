@@ -5,15 +5,15 @@ import './CountryFlag.css'
 export default (props) => {
     let imgURL = "";
     switch(props.countryName){
-        case 'USA': imgURL = "https://image.flaticon.com/icons/svg/555/555526.svg"; break;
-        case 'Japan': imgURL = "https://image.flaticon.com/icons/svg/555/555646.svg"; break;
-        case 'China': imgURL = "https://image.flaticon.com/icons/svg/2151/2151303.svg"; break;
-        case 'Russia': imgURL = "https://image.flaticon.com/icons/svg/206/206604.svg"; break;
-        case 'Brazil': imgURL = "https://image.flaticon.com/icons/svg/206/206597.svg"; break;
-        case 'Canada': imgURL = "https://image.flaticon.com/icons/svg/206/206609.svg"; break;
-        case 'France': imgURL = "https://image.flaticon.com/icons/svg/555/555602.svg"; break;
-        case 'India': imgURL = "https://image.flaticon.com/icons/svg/206/206606.svg"; break;
-        case 'Bulgaria': imgURL = "https://image.flaticon.com/icons/svg/206/206684.svg"; break;
+        case 'USA': imgURL = "https://flagcdn.com/32x24/us.png"; break;
+        case 'Japan': imgURL = "https://flagcdn.com/32x24/jp.png"; break;
+        case 'China': imgURL = "https://flagcdn.com/32x24/cn.png"; break;
+        case 'Russia': imgURL = "https://flagcdn.com/32x24/rs.png"; break;
+        case 'Brazil': imgURL = "https://flagcdn.com/32x24/br.png"; break;
+        case 'Canada': imgURL = "https://flagcdn.com/32x24/ca.png"; break;
+        case 'France': imgURL = "https://flagcdn.com/32x24/fr.png"; break;
+        case 'India': imgURL = "https://flagcdn.com/32x24/in.png"; break;
+        case 'Bulgaria': imgURL = "https://flagcdn.com/32x24/bg.png"; break;
         default: break;
     };
 

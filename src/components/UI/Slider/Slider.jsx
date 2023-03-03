@@ -20,7 +20,7 @@ function Slider() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://www.goalaircraft.com/wp-content/uploads/2018/06/WINDSOR-JET-CIT-X-N751WJ-025-2400x1200.jpg?x76820"
+          src="https://wallpaperset.com/w/full/2/e/9/32376.jpg"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -31,7 +31,7 @@ function Slider() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://www.womanthology.co.uk/wp-content/uploads/2015/11/Helicopter-800-x-400.jpg"
+          src="https://wallpaperset.com/w/full/3/f/8/32478.jpg"
           alt="Second slide"
         />
 
@@ -43,7 +43,7 @@ function Slider() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://images.hdqwalls.com/wallpapers/2022-top-gun-maverick-4k-5p.jpg"
+          src="https://wallpaperset.com/w/full/1/d/3/32382.jpg"
           alt="Third slide"
         />
 

@@ -66,7 +66,7 @@ class ProfileData extends React.Component {
         
         if(!this.state.loading && this.state.user != null){
             data = (<Fragment>
-            <Image roundedCircle src="http://www.aerojetvirtual.com/vam/uploads/pilot_default.png" fluid alt="Profile avatar" />
+            <Image roundedCircle src="https://www.shareicon.net/data/256x256/2016/08/18/810262_user_512x512.png" fluid alt="Profile avatar" />
             <h3><u>{this.state.user.username}</u></h3>
             <h3>Created aircraft: {aircraftCount}</h3>
             <hr />
