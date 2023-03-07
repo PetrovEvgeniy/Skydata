@@ -1,6 +1,6 @@
 # ✈️SkyData
 
-This single page application gives an opportunity to the users to share and learn interesting facts about different types of aircraft. 
+Skydata is a single page application, that provides users the opportunity to share and learn interesting facts about different types of aircraft. 
 
 # 💡Basic (guest) Functionality
 - See the last 3 added aircraft
