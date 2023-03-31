@@ -20,9 +20,9 @@ Skydata is a single page application, that provides users the opportunity to sha
 - Dynamic input field validation
 
 
-## Deployed in [Takes a few seconds to load]:
-Firebase #1 - https://skydata-app.web.app/
-Firebase #2 - https://skydata-app.firebaseapp.com/
+## Deployed in:
+Firebase #1 - https://skydata-app.web.app/  [Takes a few seconds to load]
+Firebase #2 - https://skydata-app.firebaseapp.com/  [Takes a few seconds to load]
 
 ## Installing the project dependencies
 In the project and rest directory run:
