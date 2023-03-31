@@ -22,7 +22,9 @@ Skydata is a single page application, that provides users the opportunity to sha
 
 ## Deployed in:
 [Takes a few seconds to load]
+
 Firebase #1 - https://skydata-app.web.app/
+
 Firebase #2 - https://skydata-app.firebaseapp.com/  
 
 ## Installing the project dependencies
